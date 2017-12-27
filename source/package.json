@@ -24,9 +24,10 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-clean-css": "^3.9.0",
     "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^4.0.0",
     "gulp-less": "^3.4.0",
     "gulp-sourcemaps": "^2.6.2",
-    "gulp-uglify": "^3.0.0",
+    "gulp-uglify": "^3.0.0"
   },
   "dependencies": {}
 }
