@@ -1,0 +1,23 @@
+{
+  "name": "simon-challenge",
+  "description": "A challenge for occupational progress",
+  "main": "index.html",
+  "authors": [
+    "Rob Roth"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/justanidiot/simon-challenge",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "datatables.net": "^1.10.16",
+    "datatables.net-bs": "^2.1.1"
+  }
+}
