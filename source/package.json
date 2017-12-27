@@ -4,7 +4,9 @@
   "description": "A challenge for occupational progress",
   "main": "index.html",
   "scripts": {
-    "install": "npm install && bower install"
+    "dependencies": "npm install && bower install",
+    "bootup": "npm run dependencies && gulp",
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -18,17 +20,13 @@
   "homepage": "https://github.com/justanidiot/simon-challenge#readme",
   "devDependencies": {
     "browser-sync": "^2.21.0",
-    "browserify": "^14.5.0",
     "del": "^3.0.0",
     "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-buffer": "0.0.2",
     "gulp-clean-css": "^3.9.0",
     "gulp-concat": "^2.6.1",
     "gulp-less": "^3.4.0",
     "gulp-sourcemaps": "^2.6.2",
-    "gulp-tap": "^1.0.1",
     "gulp-uglify": "^3.0.0",
-    "less-plugin-autoprefix": "^1.5.1"
   },
   "dependencies": {}
 }
