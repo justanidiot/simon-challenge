@@ -1,4 +1,6 @@
 var gulp = require('gulp');
+// Gulp dependencies for HTML files
+var htmlmin = require('gulp-htmlmin');
 // Gulp dependencies for our stylesheets
 var less = require('gulp-less');
 var cleanCSS = require('gulp-clean-css');
@@ -30,7 +32,7 @@ var app = {
 		css: 'css',
 		fonts: 'fonts'
 	}
-}
+};
 
 // Build/Production config
 var build = {
@@ -46,7 +48,7 @@ var build = {
 		fonts: '../build/fonts',
 		html: '../build/',
 	}
-}
+};
 
 var serve = done => {
 	browserSync.init({
@@ -55,7 +57,7 @@ var serve = done => {
         }
     });
 	done();
-}
+};
 
 var styles = done => {
 	return gulp.src( app.source.less )
@@ -66,13 +68,13 @@ var styles = done => {
 		.pipe(gulp.dest( app.dest.css ));
 
 	done();
-}
+};
 
 var fonts = done => {
 	return gulp.src( app.source.fonts )
 		.pipe(gulp.dest( app.dest.fonts ));
 	done();
-}
+};
 
 var scripts = done => {
 	return gulp.src( app.source.js )
@@ -85,37 +87,38 @@ var scripts = done => {
     .pipe(gulp.dest( app.dest.js ));
 
     done();
-}
+};
 
 var buildStyles = done => {
 	return gulp.src( build.src.css )
 		.pipe(gulp.dest( build.dest.css ));
 	done();
-} 
+};
 
 var buildScripts = done => {
 	return gulp.src( build.src.js )
 		.pipe(gulp.dest( build.dest.js ));
 	done();
-}
+};
 
 var buildFonts = done => {
 	return gulp.src( build.src.fonts )
 		.pipe(gulp.dest( build.dest.fonts ));
 	done();
-}
+};
 
 var buildHtml = done => {
 	return gulp.src( build.src.html )
+		.pipe(htmlmin({collapseWhitespace: true}))
 		.pipe(gulp.dest( build.dest.html ));
 	done();
-}
+};
 
 var cleanBuild = done => {
 	return del('../build/', { force: true }).then( paths => {
 		done();
 	})
-}
+};
 
 // gulp.task('build', gulp.series(styles, fonts, scripts, build));
 gulp.task('build', gulp.series(styles, fonts, scripts, cleanBuild, buildStyles, buildScripts, buildFonts, buildHtml ));
