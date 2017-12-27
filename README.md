@@ -1,4 +1,5 @@
 # Simon Says Application
+Preview: https://justanidiot.github.io/simon-challenge/build/
 
 ## Requirements
 - Latest Node and NPM.
