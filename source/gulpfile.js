@@ -120,12 +120,17 @@ var cleanBuild = done => {
 	})
 };
 
+var reloadBrowser = done => {
+	browserSync.reload();
+	done();
+};
+
 // gulp.task('build', gulp.series(styles, fonts, scripts, build));
 gulp.task('build', gulp.series(styles, fonts, scripts, cleanBuild, buildStyles, buildScripts, buildFonts, buildHtml ));
 
 gulp.task('default', gulp.series( styles, fonts, scripts, serve, done => {
-	gulp.watch('index.html', gulp.parallel( browserSync.reload ));
-	gulp.watch(app.source.less, gulp.series( styles, browserSync.reload ));
-	gulp.watch(app.source.js, gulp.series( scripts, browserSync.reload ));
+	gulp.watch('index.html', gulp.parallel( reloadBrowser ));
+	gulp.watch('less/**/*.less', gulp.series( styles, reloadBrowser ));
+	gulp.watch(app.source.js, gulp.series( scripts, reloadBrowser ));
 	done();
 }));
